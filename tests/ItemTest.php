@@ -10,8 +10,22 @@ class ItemTest extends TestCase {
 	}
 
 	public function testIDisAnInteger() {
-		$item = new Item;
+		$item = new ItemChild;
 
 		$this->assertIsInt($item->getID());
+	}
+
+	public function testTokenIsAString() {
+		$item = new ItemChild;
+
+		$reflector = new ReflectionClass(Item::class);
+
+		$method = $reflector->getMethod('getToken');
+		$method->setAccessible(true);
+
+		$result = $method ->invoke($item);
+
+		// $this->assertIsString($item->getToken());
+		$this->assertIsString($result);
 	}
 }
