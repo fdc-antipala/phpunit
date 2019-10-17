@@ -28,14 +28,14 @@ class QueueTest extends TestCase {
 		$this->assertEquals('green', $item);
 	}
 
-	public function testAnItemIsRemovedFromTheFrontOfTheQueue() {
+	public function testAnItemIsRemovedFromTheFrontOfTheUniverse() {
 		$this->queue->push('first');
 		$this->queue->push('second');
 
 		$this->assertEquals('first', $this->queue->pop());
 	}
 
-	public function testMaxNumberOfItemsCanBeAdded() {
+	public function testMaxNumberOfItemsCanBAdd() {
 		for ($i = 0; $i < Queue::MAX_ITEMS; $i++) {
 			$this->queue->push($i);
 		}
@@ -43,7 +43,7 @@ class QueueTest extends TestCase {
 		$this->assertEquals(Queue::MAX_ITEMS, $this->queue->getCount());
 	}
 
-	public function testExceptionThrownWhenAddingAnItemToAFullQueue() {
+	public function testExceptionThrownWhenAddingAnItemToAFulQ() {
 		for ($i = 0; $i < Queue::MAX_ITEMS; $i++) {
 			$this->queue->push($i);
 		}
