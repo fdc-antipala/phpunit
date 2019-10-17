@@ -60,6 +60,7 @@ class User
      */
     public function notify($message)
     {
+        // return Mailer::send($this->email, $message);
         return $this->mailer->sendMessage($this->email, $message);
     }
 }

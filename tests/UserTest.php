@@ -52,4 +52,10 @@ class UserTest extends TestCase {
 
 		$user->notify("Hello");
 	}
+
+	public function testNotifyReturnTrue () {
+		$user = new User('test@test.com');
+		$mailer = new Mailer;
+		$this->assertTrue($user->notify('Hello'));
+	}
 }
