@@ -31,6 +31,21 @@ class User
      * @var Mailer
      */
     protected $mailer;
+    protected $mailer_callable;
+
+    /**
+     * Constructor
+     *
+     * @param string $email The user's email
+     *
+     * @return void
+     */
+    public function __construct(string $email, string $first_name, string $username)
+    {
+        $this->email = $email;
+        $this->first_name = $first_name;
+        $this->username = $username;
+    }
 
     /**
      * Set the mailer dependency
@@ -39,6 +54,17 @@ class User
      */
     public function setMailer(Mailer $mailer) {
         $this->mailer = $mailer;
+    }
+
+    /**
+     * Mailer callable setter
+     *
+     * @param callable $mailer_callable A Mailer callable
+     *
+     * @return void
+     */
+    public function seCalllCall(callable $mailer_callable) {
+        $this->mailer_callable = $mailer_callable;
     }
 
     /**
@@ -61,6 +87,8 @@ class User
     public function notify($message)
     {
         // return Mailer::send($this->email, $message);
-        return $this->mailer->sendMessage($this->email, $message);
+        // return $this->mailer->send($this->email, $message);
+        // return $this->mailer->sendMessage($this->email, $message);
+        return call_user_func($this->mailer_callable, $this->email, $message);
     }
 }

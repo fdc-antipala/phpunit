@@ -18,6 +18,7 @@ class Mailer
      */
     public function sendMessage($email, $message)
     {
+        return true;
         if (empty($email))
         {
             throw new Exception;
@@ -41,6 +42,7 @@ class Mailer
      *
      * @return boolean
      */
+    // public static function send(string $email, string $message)
     public static function send(string $email, string $message)
     {
         if (empty($email)) {
